@@ -5,15 +5,17 @@ const cors = require('cors')
 
 const server = express();
 
+server.use(express.static(__dirname + '/client/build'))
 server.use(cors())
 server.use(express.json())
+
 
 server.use(logger)
 server.use('/api/posts', pRouter)
 server.use('/api/users', uRouter)
 
 server.get('/', (req, res) => {
-  res.send(`<h2>Let's write some middleware!</h2>`)
+  res.send(__dirname + '/client/build/index.html')
 });
 
 //custom middleware
