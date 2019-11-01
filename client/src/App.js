@@ -11,14 +11,18 @@ const baseUrl = process.env.NODE_ENV === 'development' ? 'http://localhost:4000'
 function App() {
   const [userArray, setUserArray] = useState([])
 
-  useEffect(() => {
+  const getUsers = () => {
     axios.get(baseUrl + '/api/users')
-        .then(res => {
-            setUserArray(res.data)
-        })
-        .catch(error => {
-            console.log(error.message)
-        })
+    .then(res => {
+        setUserArray(res.data)
+    })
+    .catch(error => {
+        console.log(error.message)
+    })
+  }
+
+  useEffect(() => {
+    getUsers()
   }, [])
 
 
@@ -28,8 +32,8 @@ function App() {
         <Link to ={'/'}>Users</Link>
         <Link to ={'/posts'}>Posts</Link>
       </div>
-      <Route exact path="/" render={(props) => <Users {...props} userArray={userArray}/>}/>
-      <Route path="/posts" render={(props) => <Post {...props} userArray={userArray}/>}/>
+      <Route exact path="/" render={(props) => <Users {...props} userArray={userArray} getUsers={getUsers}/>}/>
+      <Route path="/posts" render={(props) => <Post {...props} userArray={userArray} getUsers={getUsers}/>}/>
     </div>
   );
 }
