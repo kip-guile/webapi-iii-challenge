@@ -1,24 +1,11 @@
-import React, {useState, useEffect} from 'react';
-import axios from 'axios';
+import React from 'react';
 import styled from 'styled-components';
 import UserCard from './userCard';
 
-const baseUrl = process.env.NODE_ENV === 'development' ? 'http://localhost:4000' : ''
 
-
-const Users = () => {
+const Users = (props) => {
     console.log(process.env.NODE_ENV)
-    const [userArray, setUserArray] = useState([])
-
-    useEffect(() => {
-        axios.get(baseUrl + '/api/users')
-            .then(res => {
-                setUserArray(res.data)
-            })
-            .catch(error => {
-                console.log(error.message)
-            })
-    }, [])
+    const userArray = props.userArray;
 
 
     return (
