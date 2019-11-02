@@ -1,23 +1,32 @@
-import React from 'react';
-import styled from 'styled-components';
-
-const Card = styled.div`
-    padding: 1em;
-    margin: 1.5em;
-    display: flex;
-    flex-direction: column;
-    flex-basis: 20%;
-    background-color: pink;`
+import React, {useState} from 'react';
+import { Card } from 'antd';
+import { Button } from 'antd';
+import ViewModal from './viewModal';
 
 const UserCard = (props) => {
-    const {name, userDelete} = props;
+    const {name, userDelete, id} = props;
+    const [isVisible, setIsVisible] = useState(false)
+
+    const showModal = () => {
+        setIsVisible(true)
+    }
+
+    const handleCancel = () => {
+        setIsVisible(false)
+    }
     
     return (
-        <Card>
+        <Card title="Default size card" extra={<button onClick={() => showModal()}>view</button>} style={{ margin: '1.5em', backgroundColor: 'pink', width: 300 }}>
             <h2>{name}</h2>
             <div>
-            <button>edit</button>
-            <button onClick={userDelete}>delete</button>
+            <Button style={{ margin: '0.3em'}} type="primary">Edit</Button>
+            <Button style={{ margin: '0.3em'}} type="primary" onClick={() => userDelete(id)}>delete</Button>
+            <ViewModal
+                // wrappedComponentRef={saveFormRef}
+                visible={isVisible}
+                onCancel={handleCancel}
+                id={id}
+                />
             </div>
         </Card>
     )

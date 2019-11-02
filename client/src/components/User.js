@@ -21,12 +21,6 @@ const Users = (props) => {
         setIsVisible(false)
     }
 
-    const handleSubmit = (formValues, actions) => {
-        console.log(formValues);
-        actions.resetForm();
-        setIsVisible(false)
-    }
-
       const saveFormRef = formRef => {
         formRef = formRef;
       };
@@ -43,7 +37,14 @@ const Users = (props) => {
             })
     }
 
-    const deleteUser =() => {
+    const deleteUser =(id) => {
+        axios.delete(baseUrl + `/api/users/${id}`)
+            .then(() => {
+                getUsers();
+            })
+            .catch(err => {
+                console.log(err.message)
+            })
 
     }
 

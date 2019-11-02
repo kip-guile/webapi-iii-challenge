@@ -3,8 +3,7 @@ import 'antd/dist/antd.css';
 import {AntInput} from "./createAntFields";
 import { Formik, Form, Field } from 'formik';
 import { Button } from 'antd';
-
-import { Modal, Input } from 'antd';
+import { Modal } from 'antd';
 
 const CollectionCreateForm = (props) => {
     const {visible, onCancel, onCreate, handleSubmit} = props;
