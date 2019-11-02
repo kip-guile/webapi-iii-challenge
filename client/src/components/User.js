@@ -51,9 +51,14 @@ const Users = (props) => {
 
 
     return (
-        <div>
+        <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-around', alignItems: 'center'}}>
         <div>
         <Button type="primary" onClick={showModal}>Add User</Button>
+        </div>
+        
+        <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-evenly'}}>
+        <div>
+        
             <CollectionCreateForm
                 wrappedComponentRef={saveFormRef}
                 visible={isVisible}
@@ -68,6 +73,7 @@ const Users = (props) => {
         </div>    
         )
         }
+        </div>
         </div>
     )
 }
