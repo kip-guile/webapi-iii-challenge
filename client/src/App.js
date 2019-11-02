@@ -5,6 +5,7 @@ import './App.css';
 import { Link } from 'react-router-dom';
 import Users from './components/User';
 import Post from './components/Post';
+import { Button } from 'antd';
 
 const baseUrl = process.env.NODE_ENV === 'development' ? 'http://localhost:4000' : ''
 
@@ -29,7 +30,7 @@ function App() {
   return (
     <div className="App">
       <div>
-        <Link to ={'/'}>Users</Link>
+        <Link to ={'/'}><Button type="primary">Users</Button></Link>
         <Link to ={'/posts'}>Posts</Link>
       </div>
       <Route exact path="/" render={(props) => <Users {...props} userArray={userArray} getUsers={getUsers}/>}/>

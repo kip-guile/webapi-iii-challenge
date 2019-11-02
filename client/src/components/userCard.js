@@ -10,14 +10,14 @@ const Card = styled.div`
     background-color: pink;`
 
 const UserCard = (props) => {
-    const {name} = props;
+    const {name, userDelete} = props;
     
     return (
         <Card>
             <h2>{name}</h2>
             <div>
             <button>edit</button>
-            <button>delete</button>
+            <button onClick={userDelete}>delete</button>
             </div>
         </Card>
     )
