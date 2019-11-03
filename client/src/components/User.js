@@ -12,6 +12,8 @@ const Users = (props) => {
     const {getUsers} = props;
     const userArray = props.userArray;
     const [isVisible, setIsVisible] = useState(false)
+    const [isEditVisible, setIsEditVisible] = useState(false)
+    const [userToEdit, setUserToEdit] = useState('')
 
     const showModal = () => {
         setIsVisible(true)
@@ -48,6 +50,19 @@ const Users = (props) => {
 
     }
 
+    const editUser =(formValues, actions) => {
+        axios.put(baseUrl + `/api/users/${userToEdit}`, {name: formValues.name})
+            .then(res => {
+                actions.resetForm();
+                setIsEditVisible(false)
+                getUsers();
+            })
+            .catch(err => {
+                console.log(err.message)
+            })
+
+    }
+
 
 
     return (
@@ -69,7 +84,7 @@ const Users = (props) => {
         {
         userArray.map(user => 
         <div key={user.id}>
-            <UserCard name={user.name} id={user.id} getUsers={getUsers} userDelete={deleteUser}/>
+            <UserCard name={user.name} id={user.id} getUsers={getUsers} userDelete={deleteUser} userEdit={editUser} setUserToEdit={setUserToEdit} isEditVisible={isEditVisible} setIsEditVisible={setIsEditVisible}/>
         </div>    
         )
         }

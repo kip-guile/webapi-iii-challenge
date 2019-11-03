@@ -18,7 +18,7 @@ const CollectionCreateForm = (props) => {
           onOk={onCreate}
         >
           <Formik
-            initialValues={{user_id: '', text: ''}}
+            initialValues={{name: ''}}
             onSubmit={handleSubmit}
             render={() => (
                 <Form className="form-container">
