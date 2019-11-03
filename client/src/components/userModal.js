@@ -12,7 +12,7 @@ const CollectionCreateForm = (props) => {
     return (
         <Modal
           visible={visible}
-          title="Create a new user"
+          title="Enter User Details"
           okText="Create"
           onCancel={onCancel}
           onOk={onCreate}

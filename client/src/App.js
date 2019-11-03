@@ -5,8 +5,7 @@ import './App.css';
 import { Link } from 'react-router-dom';
 import Users from './components/User';
 import Post from './components/Post';
-import { Button } from 'antd';
-import { Layout, Menu, Breadcrumb } from 'antd';
+import { Layout, Menu } from 'antd';
 
 const { Header, Content, Footer } = Layout;
 
@@ -49,7 +48,7 @@ function App() {
        
       </Menu>
     </Header>
-    <Content style={{ padding: '0 50px' }}>
+    <Content style={{ padding: '0 0px' }}>
 
       <div style={{ background: '#fff', padding: 24, minHeight: 280 }}>
       <Route exact path="/" render={(props) => <Users {...props} userArray={userArray} getUsers={getUsers}/>}/>
